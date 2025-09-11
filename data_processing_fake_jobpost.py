@@ -62,4 +62,4 @@ print(df.head()[[col for col in df.columns if "_clean" in col]])
 
 # Save final dataset with cleaned text
 df.to_csv("preprocessed_fake_job_postings.csv", index=False, encoding="utf-8")
-print("✅ Preprocessing complete! File saved as preprocessed_fake_job_postings.csv")
+print("Preprocessing complete! File saved as preprocessed_fake_job_postings.csv")
