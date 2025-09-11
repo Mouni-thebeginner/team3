@@ -22,7 +22,7 @@ from sklearn.linear_model import LogisticRegression
 
 # Download NLTK resources
 nltk.download("punkt")
-nltk.download("punkt_tab")   # ✅ Fix LookupError
+nltk.download("punkt_tab")   #Fix LookupError
 nltk.download("wordnet")
 nltk.download("stopwords")
 
@@ -42,13 +42,13 @@ def preprocess_text(text):
     lems = [lemmatizer.lemmatize(word) for word in tokens]
     return " ".join(lems)
 
-print("\n🔄 Preprocessing data...")
+print("\nPreprocessing data...")
 df["description_clean"] = df["description"].apply(preprocess_text)
 df = df.dropna(subset=["fraudulent"])  # Drop rows with missing target
-print("✅ Preprocessing complete!")
+print("Preprocessing complete!")
 
 # Show first 5 preprocessed rows
-print("\n📊 First 5 Preprocessed Rows:")
+print("\nFirst 5 Preprocessed Rows:")
 print(df[["title", "description", "description_clean"]].head(5))
 
 # Features (X) and Target (y)
@@ -64,14 +64,14 @@ X_train, X_test, y_train, y_test = train_test_split(
     X_tfidf, y, test_size=0.2, random_state=42, stratify=y
 )
 
-print("\n🔄 Training model...")
+print("\nTraining model...")
 model = LogisticRegression(max_iter=1000)
 model.fit(X_train, y_train)
-print("✅ Training complete!")
+print("Training complete!")
 
-print("\n🔄 Testing model...")
+print("\nTesting model...")
 y_pred = model.predict(X_test)
-print("✅ Testing complete!")
+print("Testing complete!")
 
 # Show first 5 actual vs predicted results
 results = pd.DataFrame({
@@ -80,7 +80,7 @@ results = pd.DataFrame({
     "Predicted": y_pred[:5]
 })
 
-print("\n📊 First 5 Test Results:")
+print("\nFirst 5 Test Results:")
 print(results.to_string(index=False))
 
-print("\n✅ All steps complete! (Preprocessing + Training + Testing)")
+print("\nAll steps complete! (Preprocessing + Training + Testing)")
